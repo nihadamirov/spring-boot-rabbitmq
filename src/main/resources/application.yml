@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: spring-boot-rabbitmq
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+    template:
+      retry:
+        enabled: false #tekrarlamani aktive edirik, yeni message gonderilmedikde avtomatik olaraq gonderme cehdi edecek
+        initial-interval: "2s"  #retry ucun gozleme vaxt teyin edirik
+  amqp:
+    deserialization:
+      trust:
+        all: true
+
+#Custom Queue Properties
+rabbit:
+  queue:
+    exchange: "my-topic-exchange"
+    name: "my-queue"
+    route-key: "my.routing.key"
+server:
+  port: 9909
+
